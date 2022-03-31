@@ -2,30 +2,30 @@
 
 ## 🖥️ Tech Stack
 
-**```Frontend:```**
+**Frontend:**
 
 ![html](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)&nbsp;
 ![css](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)&nbsp;
 ![javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)&nbsp;
 ![bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)&nbsp;
 
-**```Backend:```**
+**Backend:**
 
 ![python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)&nbsp;
 ![flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)&nbsp;
 
-**```DataBase:```**
+**DataBase:**
 
 ![mysql](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
 
 ## Requirements Modules
 Open command prompt and download these below modules
 
-- pip install flask
-- pip install Flask-SQLAlchemy
-- pip install Flask-Mail
-- pip install mysqlclient
-- pip install Flask-Login
+- ```pip install flask```
+- ```pip install Flask-SQLAlchemy```
+- ```pip install Flask-Mail```
+- ```pip install mysqlclient```
+- ```pip install Flask-Login```
 
 ## 🚀Snapshots
 

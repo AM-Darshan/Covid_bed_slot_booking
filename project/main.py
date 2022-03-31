@@ -14,7 +14,7 @@ import json
 
 local_server = True
 app = Flask(__name__)
-app.secret_key="darshan"
+app.secret_key="abhishek"
 
 
 #config file
@@ -46,6 +46,7 @@ db = SQLAlchemy(app)
 def load_user(user_id):
     return User.query.get(int(user_id)) or Hospitaluser.query.get(int(user_id))
 
+#************************** Start of data bases****************************************
 
 #test db
 class Test(db.Model):
@@ -68,7 +69,6 @@ class Hospitaluser(UserMixin, db.Model):
     password = db.Column(db.String(1000))
 
 #hospital user db
-
 
 class Hospitaldata(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -102,74 +102,20 @@ class Trig(db.Model):
     querys=db.Column(db.String(50))
     date=db.Column(db.String(50))
 
+#************************** End of data bases****************************************
 
-#differnt pages
+
+#**************************Differnt pages ********************************************
 
 #home
 @app.route("/")
 def home():
     return render_template("index.html")
 
-@app.route("/signup",methods=['POST','GET'])
-def signup():
-    if request.method == "POST":
-        srfid = request.form.get('srf')
-        email = request.form.get('email')
-        dob = request.form.get('dob')
-        #print(srfid,email,dob)
-        encpassword = generate_password_hash(dob)
+#********************************Admin pages*********************************************\
 
-        user=User.query.filter_by(srfid=srfid).first()
-        emailUser=User.query.filter_by(email=email).first()
-        if user or emailUser:
-            flash("Email or srif is already taken","warning")
-            return render_template("userSignup.html")
-        
-        new_user = db.engine.execute(f"INSERT INTO `user` (`srfid`,`email`,`dob`) VALUES ('{srfid}','{email}','{encpassword}') ")
-        flash("SignUp Success Please Login", "success")
-        return render_template("userlogin.html")
+#-------------------admin login------------------
 
-    return render_template("userSignup.html")
-
-#login feedback 
-
-@app.route("/login", methods=['POST', 'GET'])
-def login():
-    if request.method == "POST":
-        srfid = request.form.get('srf')
-        dob = request.form.get('dob')
-
-        user = User.query.filter_by(srfid=srfid).first()
-        if user and check_password_hash(user.dob,dob):
-            login_user(user)
-            flash("Login succesful","info")
-            return render_template("index.html")
-        else:
-            flash("Invalid credentials","danger")
-            return render_template("userlogin.html")
-        
-    return render_template("userlogin.html")
-
-
-#hospital login
-
-@app.route('/hospitallogin', methods=['POST', 'GET'])
-def hospitallogin():
-    if request.method == "POST":
-        email = request.form.get('email')
-        password = request.form.get('password')
-        user = Hospitaluser.query.filter_by(email=email).first()
-        if user and check_password_hash(user.password, password):
-            login_user(user)
-            flash("Login Success", "info")
-            return render_template("index.html")
-        else:
-            flash("Invalid Credentials", "danger")
-            return render_template("hospitallogin.html")
-
-    return render_template("hospitallogin.html")
-
-#admin login
 @app.route('/admin', methods=['POST', 'GET'])
 def admin():
 
@@ -186,7 +132,8 @@ def admin():
     return render_template("admin.html")
 
 
-# add hospital user
+#------------------add hospital user-------------------
+
 @app.route('/addHospitalUser', methods=['POST', 'GET'])
 def hospitalUser():
 
@@ -213,7 +160,31 @@ def hospitalUser():
         flash("Login and try Again", "warning")
         return render_template("addHosUser.html")
 
-#hospital data info
+
+
+#******************************  Hospital user pages   ******************************************\
+
+
+#----------------------hospital login-----------------------
+
+@app.route('/hospitallogin', methods=['POST', 'GET'])
+def hospitallogin():
+    if request.method == "POST":
+        email = request.form.get('email')
+        password = request.form.get('password')
+        user = Hospitaluser.query.filter_by(email=email).first()
+        if user and check_password_hash(user.password, password):
+            login_user(user)
+            flash("Login Success", "info")
+            return render_template("index.html")
+        else:
+            flash("Invalid Credentials", "danger")
+            return render_template("hospitallogin.html")
+
+    return render_template("hospitallogin.html")
+
+
+#---------------------hospital data info----------------------
 
 @app.route("/addhospitalinfo", methods=['POST', 'GET'])
 def addhospitalinfo():
@@ -245,7 +216,8 @@ def addhospitalinfo():
     return render_template("hospitaldata.html", postsdata=postsdata)
 
 
-#hospital data edit
+#----------------hospital data edit-----------------------
+
 @app.route("/hedit/<string:id>", methods=['POST', 'GET'])
 @login_required
 def hedit(id):
@@ -266,8 +238,8 @@ def hedit(id):
 
     return render_template("hedit.html", posts=posts)
 
-#hospital data delete
 
+#----------------------hospital data delete---------------------
 
 @app.route("/hdelete/<string:id>", methods=['POST', 'GET'])
 @login_required
@@ -278,25 +250,53 @@ def hdelete(id):
     return redirect("/addhospitalinfo")
 
 
-#logout admin
-@app.route("/logoutadmin")
-def logoutadmin():
-    session.pop('user')
-    flash("You are logout admin", "primary")
+#*****************************   User/Patient pages *****************************************\
 
-    return redirect('/admin')
+#-------------User signup page--------------
+@app.route("/signup",methods=['POST','GET'])
+def signup():
+    if request.method == "POST":
+        srfid = request.form.get('srf')
+        email = request.form.get('email')
+        dob = request.form.get('dob')
+        #print(srfid,email,dob)
+        encpassword = generate_password_hash(dob)
 
-#logout user
+        user=User.query.filter_by(srfid=srfid).first()
+        emailUser=User.query.filter_by(email=email).first()
+        if user or emailUser:
+            flash("Email or srif is already taken","warning")
+            return render_template("userSignup.html")
+        
+        new_user = db.engine.execute(f"INSERT INTO `user` (`srfid`,`email`,`dob`) VALUES ('{srfid}','{email}','{encpassword}') ")
+        flash("SignUp Success Please Login", "success")
+        return render_template("userlogin.html")
 
-@app.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    flash("Logout SuccessFul", "warning")
-    return redirect(url_for('login'))
+    return render_template("userSignup.html")
 
 
-#patient bed booking
+#--------------------User login feedback ---------------------
+
+@app.route("/login", methods=['POST', 'GET'])
+def login():
+    if request.method == "POST":
+        srfid = request.form.get('srf')
+        dob = request.form.get('dob')
+
+        user = User.query.filter_by(srfid=srfid).first()
+        if user and check_password_hash(user.dob,dob):
+            login_user(user)
+            flash("Login succesful","info")
+            return render_template("index.html")
+        else:
+            flash("Invalid credentials","danger")
+            return render_template("userlogin.html")
+        
+    return render_template("userlogin.html")
+
+
+
+#----------------patient bed booking-------------
 
 @app.route("/slotbooking", methods=['POST', 'GET'])
 @login_required
@@ -362,7 +362,9 @@ def slotbooking():
     
     return render_template("booking.html",query=query)
 
-#patient details
+
+#-----------------patient details--------------
+
 @app.route("/pdetails",methods=['GET'])
 @login_required
 def pdetails():
@@ -373,7 +375,27 @@ def pdetails():
     return render_template("details.html",data=data)
 
 
-#triggered data
+#-------------logout admin-----------
+
+@app.route("/logoutadmin")
+def logoutadmin():
+    session.pop('user')
+    flash("You are logout admin", "primary")
+
+    return redirect('/admin')
+
+#------------logout user--------------
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash("Logout SuccessFul", "warning")
+    return redirect(url_for('login'))
+
+
+#---------------triggered data-------------------
+
 @app.route("/triggers")
 def triggers():
     query=Trig.query.all() 

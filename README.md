@@ -30,58 +30,70 @@ Open command prompt and download these below modules
 ## 🚀Snapshots
 
 #### ``` Home Page ```
+
 ![image](https://user-images.githubusercontent.com/67750128/161003918-433ac180-c211-4f33-834d-62e8ab7a7c2f.png)
 
 
 
 #### ```Home Page Slider```
+
 ![image](https://user-images.githubusercontent.com/67750128/161003971-59a2055b-29f3-4db2-a206-d7c05229211c.png)
  
 
 
 #### ```User Sign Page```
+
 ![image](https://user-images.githubusercontent.com/67750128/161004000-09697dee-21a2-4a95-bf6e-318fde34d299.png)
 
 
 
 #### ```User login page```
+
 ![image](https://user-images.githubusercontent.com/67750128/161004012-5ab78db8-7ff7-4c86-8928-bfda9ccfd735.png)
 
 
 
 #### ```Hospital Login page```
+
 ![image](https://user-images.githubusercontent.com/67750128/161004034-dfe74691-6e9d-4027-8dfd-7617c98707c8.png)
 
 
 
 #### ```Admin Login Page```
+
 ![image](https://user-images.githubusercontent.com/67750128/161004049-f1741b5a-82e3-40b9-9c1f-3a46c713934f.png)
 
 
 
 #### ```Add Hospital user page```
+
 ![image](https://user-images.githubusercontent.com/67750128/161004081-72526f24-7a16-4ffa-8c56-803c1c8a7bf3.png)
 
 
 
 #### ```Add Hospital Data page```
+
 ![image](https://user-images.githubusercontent.com/67750128/161004110-ea239124-90c4-4a43-9c7b-81a41f98b1e1.png)
 
 
 
 #### ```Hospital Data Update page```
+
 ![image](https://user-images.githubusercontent.com/67750128/161004136-ea2bd0d8-1cfe-45a5-ba8c-54154b56e660.png)
 
 
 
 #### ```Bed Slot Booking page```
+
 ![image](https://user-images.githubusercontent.com/67750128/161004157-7f4ce48e-2b8d-4699-a89f-8beb19a080f8.png)
 
 
 
 #### ```Patient Detail page```
+
  ![image](https://user-images.githubusercontent.com/67750128/161004193-31194460-0554-45a1-bfba-bdeb674723e3.png)
 
 
-### Triggered Data page
+### ```Triggered Data page```
+
 ![image](https://user-images.githubusercontent.com/67750128/161004222-cbb52265-985e-4ecf-a887-313f1d3f21e8.png)

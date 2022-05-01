@@ -1,5 +1,11 @@
 # Covid Bed Slot Booking
 
+The project Covid Bed Slot Booking System includes registration of patients, storing their details into the system, and also computerized billing for beds in the hospitals. 
+
+The software has the facility to give a unique id(srfid) for every patient and stores the details of every patient automatically. It includes a facility to know the current status of availability of beds at each listed hospital.
+
+This is a system that will manage information about list of various hospitals, availability of beds in hospitals, allotment of beds for patients and display patient details
+
 ## 🖥️ Tech Stack
 
 **Frontend:**
